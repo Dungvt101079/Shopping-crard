@@ -1,0 +1,23 @@
+<div class="promotion">
+  <label for="promo-code">Have A Promo Code?</label>
+  <input type="text" id="promo-code" /> <button type="button"></button>
+</div>
+
+<div class="summary">
+  <ul>
+    <li>
+      Số lượng <span>{{ Subtotal_number | currency: "vnđ " }} </span>
+    </li>
+    <li>
+      Thuế <span>{{ Tax_number | currency: "vnđ " }} </span>
+    </li>
+    <li class="total">
+      Tổng tiền
+      <span>{{ Total_number | currency: "VND":"symbol":"1.0-0":"vi" }}</span>
+    </li>
+  </ul>
+</div>
+
+<div class="checkout">
+  <button type="button" >Check Out</button>
+</div>
