@@ -1,33 +1,40 @@
-<div class="promotion">
-  <label for="promo-code">Have A Promo Code?</label>
-  <input
-    type="text"
-    [(ngModel)]="maKhuyenMai"
+<div *ngIf="totalNumber > 0; else canhBao">
+  <div class="promotion">
+    <label for="promo-code">Have A Promo Code?</label>
+    <input type="text" [(ngModel)]="maKhuyenMai" (keyup)="nhapMaKhuyenMai()" />
+    <!-- (keyup.enter)="nhapMaKhuyenMai()" -->
+    <button type="button" (click)="nhapMaKhuyenMai()"></button>
+  </div>
 
-    (keyup)="nhapMaKhuyenMai()"
-  />
-      <!-- (keyup.enter)="nhapMaKhuyenMai()" -->
-  <button type="button" (click)="nhapMaKhuyenMai()"></button>
-</div>
+  <div class="summary">
+    <ul>
+      <li>
+        Số lượng
+        <span
+          >{{ Subtotal_number | currency: "VND":"symbol":"1.0-0":"vi" }}
+        </span>
+      </li>
+      <li>
+        Thuế
+        <span>{{ Tax_number | currency: "VND":"symbol":"1.0-0":"vi" }} </span>
+      </li>
 
-<div class="summary">
-  <ul>
-    <li>
-      Số lượng <span>{{ Subtotal_number | currency: "VND":"symbol":"1.0-0":"vi" }} </span>
-    </li>
-    <li>
-      Thuế <span>{{ Tax_number | currency: "VND":"symbol":"1.0-0":"vi" }} </span>
-    </li>
-    <li>
-      Gía trị khuyến mại <span>{{ numberKhuyenMai | currency: "VND":"symbol":"1.0-0":"vi" }} </span>
-    </li>
-    <li class="total">
-      Tổng tiền
-      <span>{{ Total_number | currency: "VND":"symbol":"1.0-0":"vi" }}</span>
-    </li>
-  </ul>
-</div>
+      <li *ngIf="numberKhuyenMai > 0">
+        Giá trị khuyến mại
+        <span
+          >{{ numberKhuyenMai | currency: "VND":"symbol":"1.0-0":"vi" }}
+        </span>
+      </li>
 
-<div class="checkout">
-  <button type="button">Check Out</button>
+      <li class="total">
+        Tổng tiền
+        <span>{{ Total_number | currency: "VND":"symbol":"1.0-0":"vi" }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="checkout">
+    <button type="button">Check Out</button>
+  </div>
 </div>
+<ng-template #canhBao>Không có sản phầm nào được chọn</ng-template>

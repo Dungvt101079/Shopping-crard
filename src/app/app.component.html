@@ -13,12 +13,17 @@
 
   <section class="container">
     <app-bottom_card
+      *ngIf="totalNumber > 0"
       [Subtotal_number]="subTotalNumber"
       [Tax_number]="taxNumber"
       [Total_number]="totalNumber"
       [numberKhuyenMai]="giaTriKhuyenMai"
+      [totalNumber]="totalNumber"
       (onNhapMaKhuyenMai)="onNhapMaKhuyenMai($event)"
     >
     </app-bottom_card>
+    <h1 *ngIf="totalNumber >= 0">
+      Chưa có sản phẩm nào được chọn xin mời chọn hàng
+    </h1>
   </section>
 </main>
