@@ -10,6 +10,7 @@ export class BottomCardComponent {
   @Input() Subtotal_number: number ;
   @Input() Tax_number: number ;
   @Input() Total_number: number ;
+  @Input() numberKhuyenMai: number ;
   @Output() onNhapMaKhuyenMai = new EventEmitter();
   constructor() {}
   nhapMaKhuyenMai() {
