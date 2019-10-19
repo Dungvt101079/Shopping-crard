@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { SanPham } from "../production.model";
 import { Alert } from "selenium-webdriver";
 @Component({
@@ -8,20 +8,24 @@ import { Alert } from "selenium-webdriver";
 })
 export class ListCardComponent {
   @Input() sanpham: SanPham[];
+  @Output() onNhapSoLuong = new EventEmitter();
+  @Output() onDeleteSanPham = new EventEmitter();
   constructor() {}
   onChange_SoLuong(id: number, input_SoLuong: HTMLInputElement) {
-    console.log(
-      "Tên sản phẩm:" +
-        this.sanpham[this.sanpham.findIndex(abc => id === abc.id)].ten
-    );
-    console.log("Giá trị số lượng:" + input_SoLuong.value);
+    // console.log(
+    //   "Tên sản phẩm:" +
+    //     this.sanpham[this.sanpham.findIndex(abc => id === abc.id)].ten
+    // );
+    // console.log("Giá trị số lượng:" + input_SoLuong.value);
+    this.onNhapSoLuong.emit([input_SoLuong.value, id]);
   }
   onDelete(id: number) {
     const idSanSham = this.sanpham.findIndex(abc => id === abc.id);
     {
       if (idSanSham >= 0) {
         alert("Đã xóa sản phẩm " + this.sanpham[idSanSham].ten);
-        this.sanpham.splice(idSanSham, 1);
+        // this.sanpham.splice(idSanSham, 1);
+        this.onDeleteSanPham.emit(id);
       }
     }
   }

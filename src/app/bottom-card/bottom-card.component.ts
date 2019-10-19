@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-bottom_card",
@@ -10,8 +10,9 @@ export class BottomCardComponent {
   @Input() Subtotal_number: number ;
   @Input() Tax_number: number ;
   @Input() Total_number: number ;
+  @Output() onNhapMaKhuyenMai = new EventEmitter();
   constructor() {}
   nhapMaKhuyenMai() {
-    console.log(this.maKhuyenMai);
+    this.onNhapMaKhuyenMai.emit(this.maKhuyenMai);
   }
 }
