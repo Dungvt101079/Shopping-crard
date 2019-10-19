@@ -9,19 +9,27 @@
       </div>
       <div class="detail">
         <div class="name">
-
           <a href="#">{{ i.ten }}</a>
         </div>
         <div class="description">
           {{ i.mota }}
         </div>
-        <div class="price">{{ i.gia | currency:'vnđ ' }}</div>
+        <div class="price">
+          {{ i.gia | currency: "VND":"symbol":"1.0-0":"vi" }}
+        </div>
       </div>
     </div>
 
     <div class="col right">
       <div class="quantity">
-        <input type="number" class="quantity" step="1" [value]="i.soluong" />
+        <input
+          #inputSoLuong
+          type="number"
+          class="quantity"
+          step="1"
+          [value]="i.soluong"
+          (input)="onChange_SoLuong(i.id, inputSoLuong)"
+        />
       </div>
 
       <div class="remove">

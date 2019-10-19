@@ -1,10 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
-import { AppComponent } from './app.component';
-import { ListCardComponent } from './list-card/list-card.component';
-import { BottomCardComponent } from './bottom-card/bottom-card.component';
-import { HeaderCardComponent } from './header-card/header-card.component';
+import { AppComponent } from "./app.component";
+import { ListCardComponent } from "./list-card/list-card.component";
+import { BottomCardComponent } from "./bottom-card/bottom-card.component";
+import { HeaderCardComponent } from "./header-card/header-card.component";
 
 @NgModule({
   declarations: [
@@ -13,10 +14,8 @@ import { HeaderCardComponent } from './header-card/header-card.component';
     BottomCardComponent,
     HeaderCardComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

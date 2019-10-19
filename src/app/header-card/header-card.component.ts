@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-header-card',
@@ -6,7 +6,7 @@ import { Component} from '@angular/core';
   // styleUrls: ['./header-card.component.css']
 })
 export class HeaderCardComponent  {
-nuberItems: number = 30
+@Input() numberItems: number
   constructor() {   }
 
 

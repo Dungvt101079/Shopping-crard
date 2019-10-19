@@ -1,36 +1,27 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { SanPham } from "../production.model";
+import { Alert } from "selenium-webdriver";
 @Component({
   selector: "app-list-card",
   templateUrl: "./list-card.component.html"
   // styleUrls: ['./list-card.component.css']
 })
 export class ListCardComponent {
-  sanpham: SanPham[] = [
-    {
-      id: 1,
-      ten: "Sẩn phẩm 1",
-      anh: "https://via.placeholder.com/200x150",
-      mota: "Description for product item number 1",
-      gia: 300000,
-      soluong: 2
-    },
-    {
-      id: 2,
-      ten: "Sẩn phẩm 2",
-      anh: "//via.placeholder.com/200x150",
-      mota: "Description for product item number 2",
-      gia: 70000,
-      soluong: 1
-    }
-  ];
+  @Input() sanpham: SanPham[];
   constructor() {}
-
+  onChange_SoLuong(id: number, input_SoLuong: HTMLInputElement) {
+    console.log(
+      "Tên sản phẩm:" +
+        this.sanpham[this.sanpham.findIndex(abc => id === abc.id)].ten
+    );
+    console.log("Giá trị số lượng:" + input_SoLuong.value);
+  }
   onDelete(id: number) {
-    const idsanpam = this.sanpham.findIndex(SanPham => id === SanPham.id);
+    const idSanSham = this.sanpham.findIndex(abc => id === abc.id);
     {
-      if (idsanpam !== -1) {
-        this.sanpham.splice(idsanpam, 1);
+      if (idSanSham >= 0) {
+        alert("Đã xóa sản phẩm " + this.sanpham[idSanSham].ten);
+        this.sanpham.splice(idSanSham, 1);
       }
     }
   }

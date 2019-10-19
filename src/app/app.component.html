@@ -1,13 +1,18 @@
 <main>
   <header class="container">
-    <app-header-card></app-header-card>
+    <app-header-card [numberItems]="40"></app-header-card>
   </header>
 
   <section class="container">
-    <app-list-card></app-list-card>
+    <app-list-card [sanpham]="sanpham"></app-list-card>
   </section>
 
   <section class="container">
-    <app-bottom_card> </app-bottom_card>
+    <app-bottom_card
+      [Subtotal_number]="Subtotal_number"
+      [Tax_number]="Tax_number"
+      [Total_number]="Total_number"
+    >
+    </app-bottom_card>
   </section>
 </main>
